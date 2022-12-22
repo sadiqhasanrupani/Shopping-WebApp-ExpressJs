@@ -1,29 +1,37 @@
-// node core modules
-const http = require("http");
-
-// third party modules
 const express = require("express");
+const bodyParser = require("body-parser");
 
-// creating express app.
+// path handler inbuild module
+const path = require("path");
+
+// routes
+const adminData = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+
+//utils
+const rootDir = require("./utils/path");
+
+// express app
 const app = express();
+const port = 8080;
 
-app.use((req, res, next) => {
+// controllers
+const { get404 } = require("./controller/error");
 
-  next();
-}) 
+// configuration for the template engine
+app.set("view engine", "ejs"); // configuration for ejs TEMPLATE ENGINE
+app.set("views", "views");
 
-app.use((req, res, next) => {
-  res.send(`
-  <body  style="font-family: Segoe UI;">
-    <h1 align="center">Hii from Express.js file.</h1>
-  </body>
-  </html>
-  `);
+app.use(express.static(path.join(rootDir, "public")));
 
-  next(); // to get the permission to continue the next middleware function.
-});
+app.use(bodyParser.urlencoded({ extended: false }));
 
-// importing app to the createServer argument
-const server = http.createServer(app);
+app.use("/admin", adminData.routes);
+app.use(shopRoutes);
 
-server.listen(8000);
+// 404 middleware
+app.use(get404);
+
+app.listen(port, () =>
+  console.log(`The express app is running on http://localhost:${port}/`)
+);
