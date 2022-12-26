@@ -7,13 +7,13 @@ const router = Router();
 import path from "path";
 
 // utils
-import rootDir from "../utils/path";
+import { publicPath } from "../utils/path";
 
 // controllers
 import { getAddProduct, postAddProduct } from "../controller/products";
 
 // router.use(express.static(path.join(path.dirname(process.mainModule?.filename as string), "public")));
-router.use(express.static(path.join(__dirname, "../", "../", "../", "public")))
+router.use(express.static(publicPath))
 
 router.get("/add-product", getAddProduct);
 

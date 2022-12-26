@@ -1,18 +1,12 @@
-import { readFile, write, writeFile } from "fs";
-import path, { dirname } from "path";
-import rootDir from "../utils/path";
+import { readFile, writeFile } from "fs";
 
-const productPath: string = path.join(
-  __dirname,
-  "../",
-  "../",
-  "../",
-  "data",
-  "products.json"
-);
+import { dataPath } from "../utils/path";
+import { join } from "path";
+
+const productPath: string = join(dataPath, "products.json");
 
 export interface RequestBody {
-  product_title: string;
+  title: string;
 }
 
 export const getProductsFromFile = (cb: CallableFunction) => {
