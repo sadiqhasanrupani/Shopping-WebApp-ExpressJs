@@ -1,20 +1,41 @@
 .form-control {
-    margin: 1rem 0;
+    margin: 1rem auto;
 }
-
 .form-control label,
-.form-control input {
+.form-control input,
+.form-control textarea{
     display: block;
     width: 100%;
     margin-bottom: 0.25rem;
 }
 
-.form-control input {
+.form-control input,
+.form-control textarea{
     border: 1px solid #a1a1a1;
     font: inherit;
-    border-radius: 2px;
+    border-radius: .3rem;
+    padding: 1.3rem 1rem ;
 }
 
-.form-control input:focus {
+.form-control input {
+    height: 1.6rem;
+}
+.form-control textarea {
+    height: 10rem;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
     outline-color: #00695c;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.form-control input::-webkit-outer-spin-button,
+.form-control input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+.form-control input[type=number] {
+  -moz-appearance: textfield;
 }

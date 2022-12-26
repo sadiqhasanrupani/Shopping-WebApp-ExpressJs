@@ -7,6 +7,9 @@ const productPath: string = join(dataPath, "products.json");
 
 export interface RequestBody {
   title: string;
+  imageUrl: string;
+  description: string;
+  price: number;
 }
 
 export const getProductsFromFile = (cb: CallableFunction) => {
@@ -21,8 +24,15 @@ export const getProductsFromFile = (cb: CallableFunction) => {
 
 class Product {
   title: string;
-  constructor(title: string) {
+  imageUrl: string;
+  description: string;
+  price: number;
+
+  constructor(title: string, imageUrl: string, description: string, price: number) {
     this.title = title;
+    this.imageUrl = imageUrl;
+    this.description = description;
+    this.price = price;
   }
 
   save() {

@@ -10,13 +10,17 @@ import path from "path";
 import { publicPath } from "../utils/path";
 
 // controllers
-import { getAddProduct, postAddProduct } from "../controller/products";
-
+import adminController from "../controller/admin";
 // router.use(express.static(path.join(path.dirname(process.mainModule?.filename as string), "public")));
-router.use(express.static(publicPath))
+router.use(express.static(publicPath));
 
-router.get("/add-product", getAddProduct);
+// /admin/add-product/ => GET
+router.get("/add-product", adminController.getAddProduct);
 
-router.post("/add-product", postAddProduct);
+// /admin/products/ => GET
+router.get("/products", adminController.getProducts);
+
+// /admin/products/ => POST
+router.post("/add-product", adminController.postAddProduct);
 
 export default router;

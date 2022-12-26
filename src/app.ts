@@ -1,6 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-import path from "path";
 import dotenv from "dotenv";
 dotenv.config();
 import { publicPath } from "./utils/path";
@@ -27,7 +26,7 @@ app.use("/admin", adminRouters);
 app.use(shopRouter);
 
 // 404 middleware
-app.use(get404);
+app.use(get404)
 
 app.listen(port, () => {
   console.log(`[server]: Server is running on http://localhost:${port}.`);
