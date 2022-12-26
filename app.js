@@ -1,37 +1,31 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-
-// path handler inbuild module
-const path = require("path");
-
-// routes
-const adminData = require("./routes/admin");
-const shopRoutes = require("./routes/shop");
-
-//utils
-const rootDir = require("./utils/path");
-
-// express app
-const app = express();
-const port = 8080;
-
-// controllers
-const { get404 } = require("./controller/error");
-
-// configuration for the template engine
-app.set("view engine", "ejs"); // configuration for ejs TEMPLATE ENGINE
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const body_parser_1 = __importDefault(require("body-parser"));
+const path_1 = __importDefault(require("path"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+// Routers
+const admin_1 = __importDefault(require("./routes/admin"));
+const shop_1 = __importDefault(require("./routes/shop"));
+const error_1 = require("./controller/error");
+// Express App
+const app = (0, express_1.default)();
+const port = Number(process.env.PORT);
+// configuaration of ejs and vies
+app.set("view engine", "ejs");
 app.set("views", "views");
-
-app.use(express.static(path.join(rootDir, "public")));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use("/admin", adminData.routes);
-app.use(shopRoutes);
-
+// configuration of parser and static files
+app.use(body_parser_1.default.urlencoded({ extended: false }));
+app.use(express_1.default.static(path_1.default.join("public")));
+// routers middleware
+app.use("/admin", admin_1.default);
+app.use(shop_1.default);
 // 404 middleware
-app.use(get404);
-
-app.listen(port, () =>
-  console.log(`The express app is running on http://localhost:${port}/`)
-);
+app.use(error_1.get404);
+app.listen(port, () => {
+    console.log(`[server]: Server is running on http://localhost:${port}.`);
+});

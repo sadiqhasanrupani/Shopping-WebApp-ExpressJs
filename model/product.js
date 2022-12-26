@@ -1,37 +1,38 @@
-const fs = require("fs");
-const path = require("path");
-const rootDir = require("../utils/path");
-
-const productPath = path.join(rootDir, "data", "products.json");
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getProductsFromFile = void 0;
+const fs_1 = require("fs");
+const path_1 = __importDefault(require("path"));
+const path_2 = __importDefault(require("../utils/path"));
+const productPath = path_1.default.join(path_2.default, "data", "products.json");
 const getProductsFromFile = (cb) => {
-  fs.readFile(productPath, (err, fileContent) => {
-    if (err) {
-      cb([]);
-    } else {
-      cb(JSON.parse(fileContent));
-    }
-  });
-};
-
-module.exports = class Product {
-  // creating a constructor to take the values
-
-  constructor(title) {
-    // assigning the local title of Product call into the title
-    this.title = title;
-  }
-
-  save() {
-    getProductsFromFile(function (products) {
-      products.push(this);
-      fs.writeFile(productPath, JSON.stringify(products), (err) => {
-        console.log(err);
-      });
+    (0, fs_1.readFile)(productPath, (err, fileContent) => {
+        if (err) {
+            cb([]);
+        }
+        else {
+            cb(JSON.parse(fileContent.toString()));
+        }
     });
-  }
-
-  static fetchAll(cb) {
-    getProductsFromFile(cb);
-  }
 };
+exports.getProductsFromFile = getProductsFromFile;
+class Product {
+    constructor(title) {
+        this.title = title;
+    }
+    save() {
+        (0, exports.getProductsFromFile)((products) => {
+            products.push(this);
+            (0, fs_1.writeFile)(productPath, JSON.stringify(products), (err) => {
+                console.log(err);
+            });
+        });
+    }
+    static fetchAll(cb) {
+        (0, exports.getProductsFromFile)(cb);
+    }
+}
+exports.default = Product;
