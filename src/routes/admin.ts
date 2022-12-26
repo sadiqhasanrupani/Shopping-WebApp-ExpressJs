@@ -11,14 +11,9 @@ import rootDir from "../utils/path";
 
 // controllers
 import { getAddProduct, postAddProduct } from "../controller/products";
-import { ExpressHandlebars } from "express-handlebars";
 
-router.use(
-  express.static(
-    path.join(path.dirname(process.mainModule?.filename as string), "./public")
-  )
-);
 // router.use(express.static(path.join(path.dirname(process.mainModule?.filename as string), "public")));
+router.use(express.static(path.join(__dirname, "../", "../", "../", "public")))
 
 router.get("/add-product", getAddProduct);
 

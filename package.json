@@ -4,8 +4,9 @@
   "description": "This is my first express server app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
+    "start": "node .\\dist\\src\\app.js",
+    "dev": "nodemon .\\dist\\src\\app.js",
+    "watch-tsc": "tsc -w",
     "babel": "nodemon --exec babel-node app.js"
   },
   "author": "Sadiqhasan Rupani",

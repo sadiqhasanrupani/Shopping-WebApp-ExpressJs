@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import path from "path";
 import dotenv from "dotenv";
 dotenv.config();
+import rootDir from "./utils/path";
 
 // Routers
 import adminRouters from "./routes/admin";
@@ -19,7 +20,7 @@ app.set("views", "views");
 
 // configuration of parser and static files
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join("public")));
+app.use(express.static(path.join(__dirname, "../", "../", "public")))
 
 // routers middleware
 app.use("/admin", adminRouters);

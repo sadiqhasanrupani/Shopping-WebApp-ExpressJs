@@ -11,8 +11,8 @@ export const getAddProduct = (req: Req, res: Res, next: Next) => {
 };
 
 export const postAddProduct = (req: Req, res: Res, next: Next) => {
-  const body = req.body as RequestBody;
-  const products = new Product(body.text);
+  const body: RequestBody = req.body as RequestBody;
+  const products = new Product(body.product_title);
   products.save();
   res.redirect("/");
 };
@@ -26,4 +26,3 @@ export const getProducts = (req: Req, res: Res, next: Next) => {
     });
   });
 };
-
