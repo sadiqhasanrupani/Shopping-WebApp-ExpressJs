@@ -11,7 +11,7 @@ interface ProductData {
 class Cart {
   static addProduct(id: string, productPrice: number) {
     fs.readFile(path, (err, fileContent) => {
-      let cart: { products: any[]; totalPrice: number } = {
+      let cart: { products: Array<string|number>; totalPrice: number } = {
         products: [],
         totalPrice: 0,
       };
