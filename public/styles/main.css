@@ -43,6 +43,8 @@ main {
 .main-header__item a {
   text-decoration: none;
   color: white;
+  font-weight: 600;
+  padding: .1rem .4rem;
 }
 
 .main-header__item a:hover,
@@ -53,7 +55,7 @@ main {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   row-gap: 2rem;
   align-items: center;
   justify-content: left;
@@ -66,7 +68,18 @@ main {
 
 .card__header,
 .card__content {
-  padding: 1rem;
+  padding: .8rem;
+}
+
+.card__header {
+  margin-top: 1rem;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card__header h1,
@@ -76,6 +89,12 @@ main {
   margin: 0;
 }
 
+.card__content p {
+  /* border: 3px solid; */
+  margin-top: .5rem;
+  text-align: center;
+}
+
 .card__image {
   width: 100%;
   /* border: 3px solid; */
@@ -83,16 +102,20 @@ main {
 
 .card__image img {
   position: relative;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
   max-width: 95%;
   /* border: 3px solid; */
   width: 100%;
   height: 20rem;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .card__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
   text-align: center;
 }
@@ -113,8 +136,7 @@ main {
   transition: .3s ease-in all;
 }
 
-.btn:hover,
-.btn:active {
+.btn:hover {
   background-color: hsl(173, 100%, 21%);
   color: white;
 }

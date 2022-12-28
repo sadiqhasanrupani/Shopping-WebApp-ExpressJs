@@ -3,4 +3,25 @@
 
 <body>
    <%- include('../includes/navigation.ejs') %>
+   <section class="product-detail">
+      <article class="product-detail__card">
+         <main class="product-detail__main">
+            <div class="product-detail__img">
+               <img src="<%= prods.imageUrl %>" alt="<%= prods.title %>"/>
+            </div>
+            <div class="product-detail__content">
+               <div class="product-detail__title">
+                  <%= prods.title %>
+               </div>
+               <div class="product-detail__description">
+                  <%= prods.description %>
+               </div>
+               <div class="product-detail__price">
+                  &#8377; <%= prods.price %>
+               </div>
+               <%- include('../includes/add-to-cart.ejs', {product: prods}) %>
+            </div>
+         </main>
+      </article>
+   </section>
 <%- include('../includes/end.ejs') %>

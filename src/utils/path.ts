@@ -13,3 +13,11 @@ export const dataPath = path.join(
   "../",
   "data"
 );
+
+export const cartDataPath = path.join(
+  path.dirname(require.main?.filename as string),
+  "../",
+  "../",
+  "data",
+  "cart.json"
+);

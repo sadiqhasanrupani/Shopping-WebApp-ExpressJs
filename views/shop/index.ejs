@@ -10,20 +10,26 @@
             <div class="grid">
                 <% for (let product of prods) { %>
                     <article class="card product-item">
-                        <header class="card__header">
-                            <h1 class="product__title"><%= product.title %></h1>
-                        </header>
                         <div class="card__image">
                             <img src="<%- product.imageUrl %>"
                                 alt="A Book">
                         </div>
-                        <div class="card__content">
-                            <h2 class="product__price">&#8377; <%- product.price %></h2>
-                            <p class="product__description"><%- product.description %></p>
-                        </div>
-                        <div class="card__actions">
-                            <button class="btn">Add to Cart</button>
-                        </div>
+                        <header class="card__header">
+                            <h1 class="product__title"><%= product.title %></h1>
+                            <div class="card__content">
+                                <h2 class="product__price">&#8377; <%- product.price %></h2>
+                                <p class="product__description"><%- product.description %></p>
+                            </div>
+                            <div class="card__actions">
+                                <form action="/products/<%= product.id %>" method="GET">
+                                    <button class="btn" type="submit">Details</button>
+                                </form>
+                                <form action="/add-to-cart" method="POST">
+                                    <button type="submit" class="btn">Add to Cart</button>
+                                </form>
+                            </div>
+                        </header>
+                        
                     </article>
                 <% } %>
             </div>
