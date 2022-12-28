@@ -40,4 +40,6 @@
 ---
 
 ![indexpage_medium](Readme/assets/indexPhoto_mediumScreen.png)
+![detialsClick_medium](Readme/assets/details_medium.png)
+![productDetail_medium](Readme/assets/detailsPage_medium.png)
 ![addProduct_medium](Readme/assets/addProduct_medium.png)
