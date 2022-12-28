@@ -4,10 +4,10 @@
   "description": "This is my first express server app",
   "main": "app.js",
   "scripts": {
-    "build": "rimraf .\\dist && tsc",
+    "build": "rimraf .\\dist && npx tsc",
     "prestart": "npm run build",
     "start": "node .\\dist\\src\\app.js",
-    "watch-tsc": "rimraf .\\dist && tsc -w",
+    "watch-tsc": "rimraf .\\dist && npx tsc -w",
     "dev": "nodemon .\\dist\\src\\app.js",
     "watch-sass": "sass --no-source-map --watch sass/index.scss public/styles/styles.css"
   },
