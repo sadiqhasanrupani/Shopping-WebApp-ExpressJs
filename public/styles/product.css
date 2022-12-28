@@ -1,4 +1,6 @@
 .product-form {
+  position: relative;
+  top: 4rem;
   width: 50rem;
   max-width: 90%;
   margin: auto;
