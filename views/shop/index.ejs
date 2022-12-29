@@ -24,9 +24,7 @@
                                 <form action="/products/<%= product.id %>" method="GET">
                                     <button class="btn" type="submit">Details</button>
                                 </form>
-                                <form action="/add-to-cart" method="POST">
-                                    <button type="submit" class="btn">Add to Cart</button>
-                                </form>
+                                <%- include('../includes/add-to-cart.ejs', {product: product}) %>
                             </div>
                         </header>
                         
