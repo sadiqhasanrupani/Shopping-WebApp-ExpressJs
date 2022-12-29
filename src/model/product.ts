@@ -68,8 +68,8 @@ class Product {
       price: number;
     }
 
-    getProductsFromFile((products: Array<any>) => {
-      const product: Array<any> =  products.find((p) => p.id === id);
+    getProductsFromFile((products: Array<ProductData>) => {
+      const product: unknown =  products.find((p) => p.id === id);
       callBack(product);
     });
   }

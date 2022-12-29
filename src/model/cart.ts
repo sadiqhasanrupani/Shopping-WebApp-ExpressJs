@@ -4,8 +4,8 @@ import { cartDataPath } from "../utils/path";
 const path = cartDataPath;
 
 interface CartData {
-  products: any[],
-  totalPrice: number
+  products: Array<{id: string, qty: number}>;
+  totalPrice: number;
 }
 interface ProductData {
   id: string;
@@ -15,17 +15,17 @@ interface ProductData {
 
 class Cart {
   static addProduct(id: string, productPrice: number) {
-    fs.readFile(path, (err, fileContent: any) => {
+    fs.readFile(path, (err, fileContent: unknown) => {
       let cart: CartData = {
         products: [],
         totalPrice: 0,
       };
       // if their is no error then we will store that data into a cart object.
       if (!err) {
-        cart = JSON.parse (fileContent);
+        cart = JSON.parse(fileContent as string);
       }
       // analysing the cart => finding exisiting cart
-      const exisitingProductIndex = cart.products.findIndex((p) => p.id === p);
+      const exisitingProductIndex = cart.products.findIndex((p) => p.id === id);
       const exisitingProduct = cart.products[exisitingProductIndex];
       let updatedProduct: ProductData;
 
@@ -39,7 +39,7 @@ class Cart {
         cart.products = [...cart.products, updatedProduct];
       }
       cart.totalPrice = +cart.totalPrice;
-      cart.totalPrice += productPrice;
+      cart.totalPrice += +productPrice;
       fs.writeFile(path, JSON.stringify(cart), (err) => {
         console.log(err);
       });
