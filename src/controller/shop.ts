@@ -2,7 +2,7 @@ import { Request as Req, Response as Res, NextFunction as Next } from "express";
 
 // models
 import Product, { RequestBody } from "../model/product";
-import { ProductRenderData, RenderData, bodyValues} from "model/shop";
+import { ProductRenderData, RenderData, bodyValues} from "../utils/shop";
 import Cart from "../model/cart";
 
 const shopController = {

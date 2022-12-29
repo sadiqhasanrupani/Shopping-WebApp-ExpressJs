@@ -2,7 +2,7 @@ import { Request as Req, Response as Res, NextFunction as Next } from "express";
 
 // models
 import Product, { RequestBody } from "../model/product";
-import { ProductRenderData } from "model/shop";
+import { ProductRenderData } from "../utils/shop";
 
 const adminController = {
   getAddProduct: (req: Req, res: Res, next: Next) => {
