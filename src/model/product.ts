@@ -59,7 +59,6 @@ class Product {
   }
 
   static findId(id: string, callBack: CallableFunction) {
-    type productDetail = { id: string };
     interface ProductData {
       id: string;
       title: string;

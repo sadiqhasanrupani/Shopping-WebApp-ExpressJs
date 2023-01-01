@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
-* {
+*,*::after,*::before {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
 }
 
 body {
@@ -25,6 +28,26 @@ main {
   background-color: #00695c;
   padding: 0 1.5rem;
   z-index: 1000;
+  overflow-y: hidden;
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+  .main-header__item {
+    display: flex;
+    align-items: center;
+  }
+  #main-header__item {
+    margin: 0;
+  }
+  #main-header__item a {
+    width:  10rem;
+    padding: .4rem .5rem;
+  }
 }
 
 .main-header__nav {
@@ -67,10 +90,17 @@ main {
   justify-content: left;
 }
 
+@media (min-width: 120rem) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .card {
   border-radius: .8rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
+
 
 .card__header,
 .card__content {
